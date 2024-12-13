@@ -1,4 +1,9 @@
 {
-  # Import all your configuration modules here
-  imports = [ ./bufferline.nix ];
+  options = {
+    # Enable relative line numbers
+    number = true;
+    relativenumber = true;
+
+
+  };
 }
