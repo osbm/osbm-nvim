@@ -52,7 +52,7 @@
             nixvim.legacyPackages.${system}.makeNixvimWithModule {
               inherit pkgs;
 
-              module = ./config;
+              module = ./.;
 
               extraSpecialArgs = specialArgs // {
                 inherit pkgs;
