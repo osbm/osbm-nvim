@@ -3,7 +3,7 @@ _:
 {
   imports = [
     ./config
-    # ./plugins
+    ./plugins
   ];
 
   config = {
