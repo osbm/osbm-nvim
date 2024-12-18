@@ -1,5 +1,5 @@
 {
-  description = "NixVim config heavily inspired by AstroNvim";
+  description = "My custom neovim configuration that has been mixed and matched from various sources";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
