@@ -17,7 +17,7 @@ _:
     # Setup clipboard support
     clipboard = {
       # Use xsel as clipboard provider
-    #   providers.xsel.enable = true;
+      #   providers.xsel.enable = true;
 
       # Sync system clipboard
       register = "unnamedplus";
