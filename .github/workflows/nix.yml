@@ -7,20 +7,39 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: cachix/install-nix-action@v16
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v16
+
+
       # TODO: add a binary cache
       # - uses: cachix/cachix-action@v10
       #   with:
       #     name: YOURCACHE
       #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix flake check --accept-flake-config
-        # Pre-build the system configuration
-      - run: nix build --accept-flake-config .
+
+
+      - name: Check the flake
+        run: nix flake check --accept-flake-config
+
+
+      - name: Pre-build the system configuration
+        run: nix build --accept-flake-config .
+
+      - name: Print out the size of /nix/store
+        run: du -sh /nix/store
+
   check-formatting:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: cachix/install-nix-action@v16
-      - run: nix shell nixpkgs#alejandra -c alejandra -c .
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v16
+
+      - name: Check formatting (dont update)
+        run: nix shell nixpkgs#alejandra -c alejandra -c .
 
