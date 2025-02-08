@@ -23,6 +23,9 @@
       };
     };
 
+    todo-comments.enable = true;
+
+
     lsp = {
       servers = {
         nixd = {
