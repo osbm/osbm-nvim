@@ -1,10 +1,7 @@
 _:
 
 {
-  imports = [
-    ./config
-    ./plugins
-  ];
+  imports = [ ./config ./plugins ];
 
   config = {
     # Use <Space> as leader key

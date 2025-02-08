@@ -13,7 +13,8 @@
     tabstop = 4; # Number of spaces that a <Tab> in the file counts for.
     shiftwidth = 4; # how many spaces are added in an indent
     softtabstop = 4; # how many spaces are added when pressing tab
-    smarttab = true; # When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.
+    smarttab =
+      true; # When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.
     # TODO: i want to see 4 spaces when i press tab in python and 2 spaces in nix using setlocal
     # is it possible for me to set this per language?
 

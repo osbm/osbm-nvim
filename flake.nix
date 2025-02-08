@@ -1,5 +1,6 @@
 {
-  description = "My custom neovim configuration that has been mixed and matched from various sources";
+  description =
+    "My custom neovim configuration that has been mixed and matched from various sources";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,12 +15,7 @@
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs =
-    { nixpkgs
-    , nixvim
-    , nix-formatter-pack
-    , ...
-    }:
+  outputs = { nixpkgs, nixvim, nix-formatter-pack, ... }:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -28,19 +24,17 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-    in
-    {
+    in {
       formatter = forAllSystems (system:
         nix-formatter-pack.lib.mkFormatter {
           pkgs = nixpkgs.legacyPackages.${system};
 
           config.tools = {
             deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
+            nixfmt.enable = true;
             statix.enable = true;
           };
-        }
-      );
+        });
 
       packages = forAllSystems (system:
         let
@@ -56,11 +50,9 @@
 
               };
             };
-        in
-        {
+        in {
           default = mkNixvim { };
           lite = mkNixvim { withLSP = false; };
-        }
-      );
+        });
     };
 }
