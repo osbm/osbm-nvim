@@ -1,9 +1,7 @@
 { self, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./mini.nix
-  ];
+  imports = [ ./mini.nix ];
 
   plugins = {
     treesitter = {
@@ -60,9 +58,7 @@
       };
     };
 
-    lualine = {
-      enable = true;
-    };
+    lualine = { enable = true; };
 
     cmp = {
       # TODO read what this does
@@ -74,9 +70,7 @@
     oil.enable = true; # shell scripting
 
     #telescope
-    telescope = {
-      enable = true;
-    };
+    telescope = { enable = true; };
     web-devicons.enable = true; # be concious of this choice
   };
 }
