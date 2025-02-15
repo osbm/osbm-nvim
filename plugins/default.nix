@@ -1,26 +1,14 @@
 { self, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./mini.nix
+  ];
+
   plugins = {
     treesitter = {
       enable = true;
       # folding = true; # i dont like the way it starts neovim with everything folded
-    };
-
-    mini = {
-      enable = true;
-      modules = {
-        starter = {
-          header = ''
-                       _                    _
-              ___  ___| |__  _ __ ___    __| | _____   __
-             / _ \/ __| '_ \| '_ ` _ \  / _` |/ _ \ \ / /
-            | (_) \__ \ |_) | | | | | || (_| |  __/\ V /
-             \___/|___/_.__/|_| |_| |_(_)__,_|\___| \_/
-
-          '';
-        };
-      };
     };
 
     todo-comments.enable = true;
@@ -71,5 +59,24 @@
         marksman = { enable = true; };
       };
     };
+
+    lualine = {
+      enable = true;
+    };
+
+    cmp = {
+      # TODO read what this does
+      # basically, it's a completion plugin
+      enable = true;
+      autoEnableSources = true;
+    };
+
+    oil.enable = true; # shell scripting
+
+    #telescope
+    telescope = {
+      enable = true;
+    };
+    web-devicons.enable = true; # be concious of this choice
   };
 }
