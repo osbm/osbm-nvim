@@ -1,6 +1,7 @@
 {
   imports = [
     ./nix.nix
+    ./python.nix
   ];
   plugins.lsp.servers = {
     typos_lsp = {

@@ -13,12 +13,14 @@
     todo-comments.enable = true;
     lualine.enable = true;
 
-    cmp = {
-      # TODO read what this does
-      # basically, it's a completion plugin
-      enable = true;
-      autoEnableSources = true;
-    };
+    # cmp = {
+    #   # TODO read what this does
+    #   # basically, it's a completion plugin
+    #   enable = true;
+    #   autoEnableSources = true;
+    # };
+    cmp-nvim-lsp.enable = true;
+
 
     oil.enable = true; # shell scripting
 
