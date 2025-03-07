@@ -27,6 +27,7 @@
       cloc
       ripgrep
       lazygit
+      black
     ];
   };
 }
