@@ -1,4 +1,4 @@
-_:
+{pkgs, ...}:
 
 {
   imports = [ ./config ./plugins ];
@@ -19,5 +19,13 @@ _:
       # Sync system clipboard
       register = "unnamedplus";
     };
+    extraPackages = with pkgs; [
+      nixd
+      git
+      git-lfs
+      cloc
+      ripgrep
+      lazygit
+    ];
   };
 }
