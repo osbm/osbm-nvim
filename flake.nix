@@ -4,8 +4,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # Nix formatting pack
     # https://gerschtli.github.io/nix-formatter-pack/nix-formatter-pack-options.html
     nix-formatter-pack = {
       url = "github:Gerschtli/nix-formatter-pack";

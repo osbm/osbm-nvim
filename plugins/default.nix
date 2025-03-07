@@ -1,7 +1,7 @@
 {
   imports = [
-    ./mini.nix
     ./lsp
+    ./mini.nix
   ];
 
   plugins = {
@@ -19,8 +19,9 @@
     #   enable = true;
     #   autoEnableSources = true;
     # };
-    cmp-nvim-lsp.enable = true;
+    # cmp-nvim-lsp.enable = true;
 
+    blink-cmp.enable = true;
 
     oil.enable = true; # shell scripting
 
