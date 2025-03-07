@@ -20,6 +20,7 @@
       register = "unnamedplus";
     };
     extraPackages = with pkgs; [
+      nix-inspect
       nixd
       git
       git-lfs
