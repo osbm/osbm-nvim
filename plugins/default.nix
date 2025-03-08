@@ -19,11 +19,16 @@
     #   enable = true;
     #   autoEnableSources = true;
     # };
-    # cmp-nvim-lsp.enable = true;
+    cmp-nvim-lsp.enable = true;
 
+    # blink completion
     blink-cmp.enable = true;
+    blink-compat.enable = true;
 
-    oil.enable = true; # shell scripting
+    # Extensible UI for Neovim notifications and LSP progress messages.
+    fidget.enable = true;
+    # fast create folders and files
+    oil.enable = true;
 
     #telescope
     telescope.enable = true;
