@@ -27,11 +27,22 @@
 
     # Extensible UI for Neovim notifications and LSP progress messages.
     fidget.enable = true;
+
+    # A navigation plugin that uses lsp symbols to provide a breadcrumb trail
+    navic.enable = true; # TODO: not seeing the output rn
+
     # fast create folders and files
     oil.enable = true;
 
-    #telescope
+    # a file explorer
     telescope.enable = true;
+
+    # vim exercises
+    vim-be-good.enable = true;
+
     web-devicons.enable = true; # be concious of this choice
+
+    # TODO: add floating command inputter
+
   };
 }
