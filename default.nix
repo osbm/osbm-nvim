@@ -28,6 +28,8 @@
       ripgrep
       lazygit
       black
+      fd
+      ripgrep
     ];
 
     performance = {
