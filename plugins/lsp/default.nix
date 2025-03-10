@@ -10,9 +10,7 @@
         formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
       };
     };
-    pyright = {
-      enable = true;
-    };
+    pyright.enable = true;
     typos_lsp = {
       enable = true;
       extraOptions.init_options.diagnosticSeverity = "Hint";
