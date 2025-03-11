@@ -1,44 +1,26 @@
 {pkgs, ...}: {
   imports = [
-    ./lsp
+    ./cmp.nix
+    ./lsp.nix
     ./mini.nix
+    ./treesitter.nix
   ];
 
   plugins = {
-    treesitter = {
-      enable = true;
-      # folding = true; # i dont like the way it starts neovim with everything folded
-      settings = {
-        ensure_installed = [
-          "python"
-          "astro"
-          "just"
-          "dockerfile"
-          "json"
-          "yaml"
-          "lua"
-          "nix"
-          "c"
-          "markdown"
-        ];
-        highlight = { enable = true; };
-      };
-    };
-
+    # todo comments highlighter
     todo-comments.enable = true;
+
+    # a statusline plugin
     lualine.enable = true;
 
-    # cmp = {
-    #   # TODO read what this does
-    #   # basically, it's a completion plugin
-    #   enable = true;
-    #   autoEnableSources = true;
-    # };
-    cmp-nvim-lsp.enable = true;
+    # syntax highlighting
+    treesitter.enable = true;
 
-    # blink completion
-    blink-cmp.enable = true;
-    blink-compat.enable = true;
+    # completion plugin
+    cmp.enable = true;
+
+    # blink completion plugin (disabled in favor of cmp)
+    blink-cmp.enable = false;
 
     # Extensible UI for Neovim notifications and LSP progress messages.
     fidget.enable = true;
@@ -55,9 +37,15 @@
     # vim exercises
     vim-be-good.enable = true;
 
-    web-devicons.enable = true; # be concious of this choice
+    # Provides Nerd Font icons
+    web-devicons.enable = true;
 
-    # TODO: add floating command inputter
+    # better ui experience
+    noice.enable = true;
+
+    # an introduction plugin
+    mini.enable = true; # TODO look more into the mini plugin
+
 
   };
 }

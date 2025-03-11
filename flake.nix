@@ -26,7 +26,6 @@
       formatter = forAllSystems (system:
         nix-formatter-pack.lib.mkFormatter {
           pkgs = nixpkgs.legacyPackages.${system};
-
           config.tools = {
             deadnix.enable = true;
             nixfmt.enable = true;
