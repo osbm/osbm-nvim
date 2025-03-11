@@ -47,6 +47,5 @@
     # an introduction plugin
     mini.enable = true; # TODO look more into the mini plugin
 
-
   };
 }
