@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{
+  # settings of these plugins live in their respective files
   imports = [
     ./cmp.nix
     ./lsp.nix
