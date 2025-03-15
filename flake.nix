@@ -9,7 +9,6 @@
       url = "github:Gerschtli/nix-formatter-pack";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixvim.url = "github:nix-community/nixvim";
   };
 
