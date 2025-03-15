@@ -4,6 +4,7 @@
     ./cmp.nix
     ./lsp.nix
     ./mini.nix
+    ./oil.nix
     ./treesitter.nix
   ];
 
