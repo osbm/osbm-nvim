@@ -8,15 +8,15 @@
         # For path completion
         { name = "path"; }
         # For buffer completion
-        { name = "buffer"; }
+        { name = "buffer"; keyword_length = 5; }
         # For command line completion
         { name = "cmdline"; }
       ];
       mapping = {
         # <CR> means enter
         "<CR>" = "cmp.mapping.confirm({ select = true })";
-        "<Tab>" = "cmp.mapping.select_next_item()";
-        "<S-Tab>" = "cmp.mapping.select_prev_item()";
+        "<C-n>" = "cmp.mapping.select_next_item()";
+        "<C-p>" = "cmp.mapping.select_prev_item()";
         "<C-e>" = "cmp.mapping.close()";
       };
     };
