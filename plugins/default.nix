@@ -49,5 +49,8 @@
 
     # cursor animation
     smear-cursor.enable = true;
+
+    # add buffer tab plugin
+    bufferline.enable = true;
   };
 }
