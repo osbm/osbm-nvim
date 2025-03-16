@@ -1,6 +1,13 @@
 {
   # settings of these plugins live in their respective files
-  imports = [./cmp.nix ./lsp.nix ./mini.nix ./oil.nix ./treesitter.nix];
+  imports = [
+    ./cmp.nix
+    ./gitsigns.nix
+    ./lsp.nix
+    ./mini.nix
+    ./oil.nix
+    ./treesitter.nix
+  ];
 
   plugins = {
     # todo comments highlighter
@@ -47,5 +54,8 @@
 
     # add buffer tab plugin
     bufferline.enable = true;
+
+    # git integration
+    gitsigns.enable = true;
   };
 }
