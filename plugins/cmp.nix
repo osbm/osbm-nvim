@@ -4,11 +4,18 @@
     settings = {
       sources = [
         # LSP source
-        { name = "nvim_lsp"; }
+        {
+          name = "nvim_lsp";
+        }
         # For path completion
-        { name = "path"; }
+        {
+          name = "path";
+        }
         # For buffer completion
-        { name = "buffer"; keyword_length = 5; }
+        {
+          name = "buffer";
+          keyword_length = 5;
+        }
         # For command line completion
         { name = "cmdline"; }
       ];
