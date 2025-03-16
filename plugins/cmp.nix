@@ -17,7 +17,7 @@
           keyword_length = 5;
         }
         # For command line completion
-        { name = "cmdline"; }
+        {name = "cmdline";}
       ];
       mapping = {
         # <CR> means enter

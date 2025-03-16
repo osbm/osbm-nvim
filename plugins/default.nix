@@ -1,6 +1,6 @@
 {
   # settings of these plugins live in their respective files
-  imports = [ ./cmp.nix ./lsp.nix ./mini.nix ./oil.nix ./treesitter.nix ];
+  imports = [./cmp.nix ./lsp.nix ./mini.nix ./oil.nix ./treesitter.nix];
 
   plugins = {
     # todo comments highlighter

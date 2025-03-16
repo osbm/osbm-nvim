@@ -14,7 +14,7 @@
         "c"
         "markdown"
       ];
-      highlight = { enable = true; };
+      highlight = {enable = true;};
     };
   };
 }

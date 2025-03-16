@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ./config ./plugins ];
+{pkgs, ...}: {
+  imports = [./config ./plugins];
 
   config = {
     # Use <Space> as leader key
