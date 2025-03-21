@@ -2,6 +2,7 @@
   # settings of these plugins live in their respective files
   imports = [
     ./cmp.nix
+    ./comment.nix
     ./gitsigns.nix
     ./lsp.nix
     ./mini.nix
