@@ -1,7 +1,6 @@
 {
   plugins.comment.settings = {
-    toggler = {
-        line = "<C+_>"; # TODO check if this works
-    };
+    toggler.line = "<C-_>";
+    opleader.line = "<C-_>";
   };
 }
