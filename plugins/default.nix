@@ -57,5 +57,8 @@
 
     # git integration
     gitsigns.enable = true;
+    
+    # commenting related plugin
+    comment.enable = true;
   };
 }
