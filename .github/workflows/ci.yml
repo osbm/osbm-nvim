@@ -30,6 +30,10 @@ jobs:
 
       - name: Print out the size of /nix/store
         run: du -sh /nix/store
+      
+      - name: Get the init.lua path
+        run: |
+          cat result/bin/nixvim-print-init
 
   check-formatting:
     runs-on: ubuntu-24.04
