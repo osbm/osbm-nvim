@@ -61,5 +61,8 @@
 
     # commenting related plugin
     comment.enable = true;
+
+    # lsp support
+    lsp.enable = true;
   };
 }

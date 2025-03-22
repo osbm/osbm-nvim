@@ -12,6 +12,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixvim,
     nix-formatter-pack,
@@ -46,7 +47,7 @@
           extraSpecialArgs =
             specialArgs
             // {
-              inherit pkgs;
+              inherit pkgs self;
             };
         };
     in {
