@@ -33,7 +33,8 @@ jobs:
       
       - name: Get the init.lua path
         run: |
-          cat result/bin/nixvim-print-init
+          init_path=$(grep "init=" result/bin/nixvim-print-init | awk -F'=' '{print $2}')
+          cat $init_path
 
   check-formatting:
     runs-on: ubuntu-24.04
