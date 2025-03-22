@@ -30,11 +30,17 @@ jobs:
 
       - name: Print out the size of /nix/store
         run: du -sh /nix/store
-      
+
       - name: Get the init.lua path
         run: |
           init_path=$(grep "init=" result/bin/nixvim-print-init | awk -F'=' '{print $2}')
-          cat $init_path
+          cp $init_path init.lua
+
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: init
+          path: init.lua
 
   check-formatting:
     runs-on: ubuntu-24.04
