@@ -39,8 +39,18 @@ jobs:
       - name: Upload the artifact
         uses: actions/upload-artifact@v4
         with:
-          name: init
+          name: neovim-configuration
           path: init.lua
+
+      - name: Publish the init.lua to an orphan github branch
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+          git checkout --orphan init-lua
+          git rm -rf .
+          git add init.lua
+          git commit -m "Publish init.lua"
+          git push origin init-lua
 
   check-formatting:
     runs-on: ubuntu-24.04
