@@ -5,7 +5,7 @@
 }: {
   plugins.oil.settings = {
     view_options = {
-      show_hidden = false;
+      show_hidden = true;
     };
   };
   # add this keymaps only if oil plugin is enabled
