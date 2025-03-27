@@ -51,7 +51,7 @@ jobs:
           git rm -rf .
           git add init.lua
           git commit -m "Publish init.lua"
-          git push origin init-lua
+          git push --force origin init-lua
 
   check-formatting:
     runs-on: ubuntu-24.04
