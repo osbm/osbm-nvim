@@ -13,6 +13,7 @@
         "nix"
         "c"
         "markdown"
+        # TODO: add mdx
       ];
       highlight = {enable = true;};
     };
