@@ -1,0 +1,6 @@
+{
+  plugins.blink-cmp = {
+    settings = {
+    };
+  };
+}

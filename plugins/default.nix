@@ -1,6 +1,7 @@
 {
   # settings of these plugins live in their respective files
   imports = [
+    ./blink-cmp.nix
     ./cmp.nix
     ./comment.nix
     ./gitsigns.nix
@@ -21,10 +22,10 @@
     treesitter.enable = true;
 
     # completion plugin
-    cmp.enable = true;
+    cmp.enable = false;
 
     # blink completion plugin (disabled in favor of cmp)
-    blink-cmp.enable = false;
+    blink-cmp.enable = true;
 
     # Extensible UI for Neovim notifications and LSP progress messages.
     fidget.enable = true;
