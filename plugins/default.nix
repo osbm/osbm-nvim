@@ -65,5 +65,8 @@
 
     # lsp support
     lsp.enable = true;
+
+    # gives me hardtime about my bad habits
+    hardtime.enable = true;
   };
 }
