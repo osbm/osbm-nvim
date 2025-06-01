@@ -67,6 +67,6 @@
     lsp.enable = true;
 
     # gives me hardtime about my bad habits
-    hardtime.enable = true;
+    hardtime.enable = false; # TODO: enable when I get used to my new keyboard
   };
 }
