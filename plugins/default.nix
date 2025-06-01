@@ -24,7 +24,7 @@
     # completion plugin
     cmp.enable = false;
 
-    # blink completion plugin (disabled in favor of cmp)
+    # blink completion plugin
     blink-cmp.enable = true;
 
     # Extensible UI for Neovim notifications and LSP progress messages.
