@@ -3,7 +3,8 @@
 
   config = {
     # Use <Space> as leader key
-    # globals.mapleader = " ";
+    globals.mapleader = " ";
+    globals.maplocalleader = " ";
 
     # Set 'vi' and 'vim' aliases to nixvim
     viAlias = true;
