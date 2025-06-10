@@ -9,6 +9,7 @@
     ./mini.nix
     ./oil.nix
     ./treesitter.nix
+    ./which-key.nix
   ];
 
   plugins = {
@@ -68,5 +69,7 @@
 
     # gives me hardtime about my bad habits
     hardtime.enable = false; # TODO: enable when I get used to my new keyboard
+
+    which-key.enable = true;
   };
 }
