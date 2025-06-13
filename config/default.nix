@@ -1,5 +1,9 @@
 {pkgs, ...}: {
-  imports = [./config ./plugins];
+  imports = [
+    ./colorscheme.nix
+    ./options.nix
+    ./plugins
+    ];
 
   config = {
     # Use <Space> as leader key
