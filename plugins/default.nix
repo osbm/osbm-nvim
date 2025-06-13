@@ -70,6 +70,7 @@
     # gives me hardtime about my bad habits
     hardtime.enable = false; # TODO: enable when I get used to my new keyboard
 
+    # tip pop-up
     which-key.enable = true;
   };
 }
