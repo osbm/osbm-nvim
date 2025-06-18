@@ -1,16 +1,8 @@
-{
-  # settings of these plugins live in their respective files
-  imports = [
-    ./blink-cmp.nix
-    ./cmp.nix
-    ./comment.nix
-    ./gitsigns.nix
-    ./lsp.nix
-    ./mini.nix
-    ./oil.nix
-    ./treesitter.nix
-    ./which-key.nix
-  ];
+{lib, ...}:{
+  imports = lib.mapAttrsToList (name: path: ./. + "/${name}")
+    (lib.filterAttrs (filename: kind:
+      filename != "default.nix" && (kind == "regular" || kind == "directory"))
+    (builtins.readDir ./.));
 
   plugins = {
     # todo comments highlighter
