@@ -64,5 +64,8 @@
 
     # tip pop-up
     which-key.enable = true;
+
+    # ai support
+    avante.enable = true;
   };
 }
