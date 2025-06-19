@@ -1,5 +1,6 @@
-{lib, ...}:{
-  imports = lib.mapAttrsToList (name: path: ./. + "/${name}")
+{lib, ...}: {
+  imports =
+    lib.mapAttrsToList (name: _path: ./. + "/${name}")
     (lib.filterAttrs (filename: kind:
       filename != "default.nix" && (kind == "regular" || kind == "directory"))
     (builtins.readDir ./.));

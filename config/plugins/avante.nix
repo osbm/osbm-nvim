@@ -1,9 +1,8 @@
 {
   plugins.avante = {
-  
-      lazyLoad.settings.event = [ "DeferredUIEnter" ];
+    lazyLoad.settings.event = ["DeferredUIEnter"];
     settings = {
-    provider = "claude";
+      provider = "claude";
       providers = {
         claude = {
           endpoint = "https://api.anthropic.com";
@@ -15,5 +14,5 @@
         };
       };
     };
-    };
+  };
 }

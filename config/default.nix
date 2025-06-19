@@ -3,7 +3,7 @@
     ./colorscheme.nix
     ./options.nix
     ./plugins
-    ];
+  ];
 
   config = {
     # Use <Space> as leader key
@@ -35,23 +35,23 @@
       ripgrep
     ];
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>gg";
-      action = "<cmd>LazyGit<CR>";
-      options = {
-        desc = "LazyGit (root dir)";
-      };
-    }
-  ];
-extraPlugins = with pkgs.vimPlugins; [
-    lazygit-nvim
-  ];
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>gg";
+        action = "<cmd>LazyGit<CR>";
+        options = {
+          desc = "LazyGit (root dir)";
+        };
+      }
+    ];
+    extraPlugins = with pkgs.vimPlugins; [
+      lazygit-nvim
+    ];
 
-  extraConfigLua = ''
-    require("telescope").load_extension("lazygit")
-  '';
+    extraConfigLua = ''
+      require("telescope").load_extension("lazygit")
+    '';
     performance = {
       byteCompileLua = {
         enable = true;

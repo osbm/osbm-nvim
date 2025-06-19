@@ -1,6 +1,6 @@
 {
   colorschemes = {
-    catppuccin  = {
+    catppuccin = {
       enable = true;
       settings.flavor = "mocha";
     };
