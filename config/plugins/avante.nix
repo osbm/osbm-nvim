@@ -1,5 +1,8 @@
 {
-  plugins.avante.settings = {
+  plugins.avante = {
+  
+      lazyLoad.settings.event = [ "DeferredUIEnter" ];
+    settings = {
     provider = "claude";
       providers = {
         claude = {
@@ -11,5 +14,6 @@
           model = "claude-3-5-sonnet-20240620";
         };
       };
+    };
     };
 }

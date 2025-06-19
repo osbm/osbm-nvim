@@ -67,5 +67,8 @@
 
     # ai support
     avante.enable = true;
+
+    # lazy loading provider
+    lz-n.enable = true;
   };
 }
