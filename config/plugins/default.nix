@@ -71,5 +71,8 @@
 
     # lazy loading provider
     lz-n.enable = true;
+
+    # oil git status shower
+    oil-git-status.enable = true;
   };
 }
