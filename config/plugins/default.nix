@@ -46,7 +46,7 @@
     mini.enable = true; # TODO look more into the mini plugin
 
     # cursor animation
-    smear-cursor.enable = true;
+    smear-cursor.enable = false;
 
     # add buffer tab plugin
     bufferline.enable = true;
