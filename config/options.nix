@@ -19,5 +19,33 @@
     autoindent = true; # Do clever autoindenting
     # TODO: i want to see 4 spaces when i press tab in python and 2 spaces in nix using setlocal
     # is it possible for me to set this per language?
+
+
+    # folding
+    foldmethod = "expr";
+    foldexpr = "nvim_treesitter#foldexpr()";
+    foldlevel = 99; # Folds with a level higher than this number will be closed
+    foldcolumn = "1";
+    foldenable = true;
+    foldlevelstart = -1;
+    fillchars = {
+      horiz = "━";
+      horizup = "┻";
+      horizdown = "┳";
+      vert = "┃";
+      vertleft = "┫";
+      vertright = "┣";
+      verthoriz = "╋";
+
+      eob = " ";
+      diff = "╱";
+
+      fold = " ";
+      foldopen = "";
+      foldclose = "";
+
+      msgsep = "‾";
+    };
+
   };
 }
