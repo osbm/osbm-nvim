@@ -1,11 +1,13 @@
 {
   plugins.blink-cmp = {
     settings = {
+      snippets = {
+        preset = "luasnip";
+      };
       sources = {
         default = [
           "lsp"
           "path"
-          "luasnip"
           "buffer"
           "copilot"
         ];
