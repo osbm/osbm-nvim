@@ -48,9 +48,12 @@
               inherit pkgs self;
             };
         };
-    in {
+    in rec {
       default = mkNixvim {};
       lite = mkNixvim {withLSP = false;};
+
+      default-print-init = default.config.build.printInitPackage;
+      lite-print-init = lite.config.build.printInitPackage;
     });
   };
 }
