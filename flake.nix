@@ -54,6 +54,9 @@
 
       default-print-init = default.config.build.printInitPackage;
       lite-print-init = lite.config.build.printInitPackage;
+
+      default-init = default.config.build.initSource;
+      lite-init = lite.config.build.initSource;
     });
   };
 }
