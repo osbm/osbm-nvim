@@ -74,5 +74,8 @@
 
     # oil git status shower
     oil-git-status.enable = true;
+
+    # blink copilot
+    blink-copilot.enable = true;
   };
 }
