@@ -20,7 +20,6 @@
     # TODO: i want to see 4 spaces when i press tab in python and 2 spaces in nix using setlocal
     # is it possible for me to set this per language?
 
-
     # folding
     foldmethod = "expr";
     foldexpr = "nvim_treesitter#foldexpr()";
@@ -46,6 +45,5 @@
 
       msgsep = "‾";
     };
-
   };
 }
