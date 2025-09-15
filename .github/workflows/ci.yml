@@ -22,7 +22,17 @@ jobs:
           hostname: github-actions
           tags: tag:ci
 
+      - name: Check if Attic endpoint is reachable
+        id: check_attic
+        run: |
+          if curl --connect-timeout 5 --silent --head http://wallfacer.curl-boga.ts.net:7080 | grep "200 OK"; then
+            echo "reachable=true" >> $GITHUB_OUTPUT
+          else
+            echo "reachable=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Setup Attic cache
+        if: steps.check_attic.outputs.reachable == 'true'
         uses: ryanccn/attic-action@v0.3.1
         with:
           endpoint: http://wallfacer.curl-boga.ts.net:7080
