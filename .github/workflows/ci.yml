@@ -32,7 +32,9 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          hostname: github-actions-${{ matrix.system//_/- }}
+          hostname: ${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
+            || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
+            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
           tags: tag:ci
 
       - name: Check if Attic endpoint is reachable
