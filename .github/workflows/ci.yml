@@ -22,12 +22,12 @@ jobs:
           hostname: github-actions
           tags: tag:ci
 
-      # TODO: add a binary cache
-      # - uses: cachix/cachix-action@v10
-      #   with:
-      #     name: YOURCACHE
-      #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-
+      - name: Setup Attic cache
+        uses: ryanccn/attic-action@v0.4.0
+        with:
+          endpoint: http://wallfacer.curl-boga.ts.net:7080
+          cache: main
+          token: ${{ secrets.ATTIC_TOKEN }}
 
       - name: Check the flake
         run: nix flake check --accept-flake-config
