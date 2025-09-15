@@ -24,9 +24,11 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Install nix
-        uses: cachix/install-nix-action@v27
-
+      - name: setup nix
+        uses: ./.github/actions/setup-nix
+        with:
+          system: ${{ matrix.system }}
+          
       - name: Login to tailscale
         uses: tailscale/github-action@v3.2.3
         with:
