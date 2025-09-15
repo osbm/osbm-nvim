@@ -10,7 +10,16 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        system:
+          - x86_64-linux
+          - aarch64-linux
+          - x86_64-darwin
+    runs-on: ${{ matrix.system == 'x86_64-linux' && 'ubuntu-24.04'
+      || matrix.system == 'aarch64-linux' && 'ubuntu-24.04-arm'
+      || matrix.system == 'x86_64-darwin' && 'macos-latest' }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -23,7 +32,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          hostname: github-actions
+          hostname: github-actions-${{ matrix.system }}
           tags: tag:ci
 
       - name: Check if Attic endpoint is reachable
