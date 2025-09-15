@@ -20,6 +20,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           hostname: github-actions
+          tags: tag:ci
 
       # TODO: add a binary cache
       # - uses: cachix/cachix-action@v10
