@@ -23,7 +23,7 @@ jobs:
           tags: tag:ci
 
       - name: Setup Attic cache
-        uses: ryanccn/attic-action@v0.4.0
+        uses: ryanccn/attic-action@v0
         with:
           endpoint: http://wallfacer.curl-boga.ts.net:7080
           cache: main
