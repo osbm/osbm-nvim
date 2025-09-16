@@ -22,8 +22,7 @@ jobs:
       || matrix.system == 'x86_64-darwin' && 'macos-latest' }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          sparse-checkout: .github/actions
+
 
       - name: setup nix
         uses: ./.github/actions/setup-nix
