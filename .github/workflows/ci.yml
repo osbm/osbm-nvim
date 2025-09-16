@@ -44,11 +44,15 @@ jobs:
       - name: Check if Attic endpoint is reachable
         id: check_attic
         run: |
-          if curl --connect-timeout 5 --silent --head http://wallfacer.curl-boga.ts.net:7080 | grep "200 OK"; then
+          if curl --connect-timeout 20 --silent --head http://wallfacer.curl-boga.ts.net:7080 | grep "200 OK"; then
             echo "reachable=true" >> $GITHUB_OUTPUT
           else
             echo "reachable=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Curl the cache
+        run: |
+          curl http://wallfacer.curl-boga.ts.net:7080/main/nix-cache-info
 
       - name: Setup Attic cache
         if: steps.check_attic.outputs.reachable == 'true'
