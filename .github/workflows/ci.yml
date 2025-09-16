@@ -30,11 +30,8 @@ jobs:
 
       - name: Install and start Tailscale
         run: |
-          # Install tailscale via nix
-          nix profile install nixpkgs#tailscale
-          
-          # Start tailscaled daemon in background
-          sudo tailscaled --state=mem: &
+          # Start tailscaled daemon in background using nix shell
+          sudo nix shell nixpkgs#tailscale --command tailscaled --state=mem: &
           
           # Wait for daemon to be ready
           sleep 10
@@ -44,14 +41,14 @@ jobs:
             || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
             || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
           
-          tailscale up \
+          nix shell nixpkgs#tailscale --command tailscale up \
             --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
             --hostname="$HOSTNAME" \
             --advertise-tags="tag:ci" \
             --accept-routes
 
       - name: Tailscale status
-        run: tailscale status || true
+        run: nix shell nixpkgs#tailscale --command tailscale status || true
 
       - name: Check if Attic endpoint is reachable
         id: check_attic
