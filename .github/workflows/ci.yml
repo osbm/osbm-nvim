@@ -23,7 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-
       - name: setup nix
         uses: ./.github/actions/setup-nix
         with:
@@ -67,17 +66,20 @@ jobs:
         run: du -sh /nix/store
 
       - name: Get the init.lua path
+        if: matrix.system == 'x86_64-linux'
         run: |
           init_path=$(grep "init=" result/bin/nixvim-print-init | awk -F'=' '{print $2}')
           cp $init_path init.lua
 
       - name: Upload the artifact
         uses: actions/upload-artifact@v4
+        if: matrix.system == 'x86_64-linux'
         with:
           name: neovim-configuration
           path: init.lua
 
       - name: Publish the init.lua to an orphan github branch
+        if: matrix.system == 'x86_64-linux'
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
@@ -86,6 +88,7 @@ jobs:
           git add init.lua
           git commit -m "Publish init.lua"
           git push --force origin init-lua
+
 
   check-formatting:
     runs-on: ubuntu-24.04
