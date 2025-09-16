@@ -34,7 +34,7 @@ jobs:
           nix profile install nixpkgs#tailscale
           
           # Start tailscaled daemon in background
-          sudo $(nix profile list | grep tailscale | awk '{print $4}')/bin/tailscaled --state=mem: &
+          sudo tailscaled --state=mem: &
           
           # Wait for daemon to be ready
           sleep 10
@@ -44,7 +44,7 @@ jobs:
             || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
             || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
           
-          $(nix profile list | grep tailscale | awk '{print $4}')/bin/tailscale up \
+          tailscale up \
             --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
             --hostname="$HOSTNAME" \
             --advertise-tags="tag:ci" \
