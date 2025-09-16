@@ -10,7 +10,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "main:2AjPdIsbKyoTGuw+4x2ZXMUT/353CXosW9pdbTQtjqw="
     ];
-  }; 
+  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
