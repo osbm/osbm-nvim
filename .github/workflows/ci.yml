@@ -28,15 +28,27 @@ jobs:
         with:
           system: ${{ matrix.system }}
 
-      - name: Login to tailscale
-        uses: tailscale/github-action@v3.2.3
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          hostname: ${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
+      - name: Install and start Tailscale
+        run: |
+          # Install tailscale via nix
+          nix profile install nixpkgs#tailscale
+          
+          # Start tailscaled daemon in background
+          sudo $(nix profile list | grep tailscale | awk '{print $4}')/bin/tailscaled --state=mem: &
+          
+          # Wait for daemon to be ready
+          sleep 10
+          
+          # Connect using OAuth
+          HOSTNAME="${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
             || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
-            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
-          tags: tag:ci
+            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
+          
+          $(nix profile list | grep tailscale | awk '{print $4}')/bin/tailscale up \
+            --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
+            --hostname="$HOSTNAME" \
+            --advertise-tags="tag:ci" \
+            --accept-routes
 
       - name: Tailscale status
         run: tailscale status || true
@@ -52,7 +64,7 @@ jobs:
 
       - name: Curl the cache
         run: |
-          curl http://wallfacer.curl-boga.ts.net:7080/main/nix-cache-info
+          curl --connect-timeout 20 --silent http://wallfacer.curl-boga.ts.net:7080/main/nix-cache-info || echo "Cache endpoint not reachable"
 
       - name: Setup Attic cache
         if: steps.check_attic.outputs.reachable == 'true'
