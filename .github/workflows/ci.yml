@@ -89,6 +89,12 @@ jobs:
           git commit -m "Publish init.lua"
           git push --force origin init-lua
 
+      # print the current folder path and the contents of the folder
+      - name: Debug current folder
+        run: |
+          pwd
+          ls -la
+
 
   check-formatting:
     runs-on: ubuntu-24.04
