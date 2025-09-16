@@ -38,6 +38,9 @@ jobs:
             || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
           tags: tag:ci
 
+      - name: Tailscale status
+        run: tailscale status > /dev/null
+
       - name: Check if Attic endpoint is reachable
         id: check_attic
         run: |
