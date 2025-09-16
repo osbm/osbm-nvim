@@ -39,7 +39,7 @@ jobs:
           tags: tag:ci
 
       - name: Tailscale status
-        run: tailscale status > /dev/null
+        run: tailscale status || true
 
       - name: Check if Attic endpoint is reachable
         id: check_attic
