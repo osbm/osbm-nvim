@@ -31,7 +31,7 @@ jobs:
       - name: Install and start Tailscale
         run: |
           # Start tailscaled daemon in background using nix shell
-          sudo -E nix shell nixpkgs#tailscale --command tailscaled --state=mem: &
+          sudo /nix/var/nix/profiles/default/bin/nix shell nixpkgs#tailscale --command tailscaled --state=mem: &
           
           # Wait for daemon to be ready
           sleep 10
