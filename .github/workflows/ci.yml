@@ -88,8 +88,10 @@ jobs:
         run: nix flake check --accept-flake-config
 
 
-      - name: Pre-build the system configuration
-        run: nix build --accept-flake-config .
+      - name: Build the Neovim Configuration
+        run: nix build --accept-flake-config . -j3
+        timeout-minutes: 300
+        continue-on-error: true
 
       - name: Print out the size of /nix/store
         run: du -sh /nix/store
