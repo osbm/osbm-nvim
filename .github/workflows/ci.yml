@@ -28,15 +28,15 @@ jobs:
         with:
           system: ${{ matrix.system }}
 
-      - name: Login to tailscale
-        uses: tailscale/github-action@v3.2.3
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          hostname: ${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
-            || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
-            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
-          tags: tag:ci
+      # - name: Login to tailscale
+      #   uses: tailscale/github-action@v3.2.3
+      #   with:
+      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      #     hostname: ${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
+      #       || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
+      #       || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
+      #     tags: tag:ci
 
       # - name: Install and start Tailscale
       #   run: |
@@ -58,13 +58,13 @@ jobs:
       #       --advertise-tags="tag:ci" \
       #       --accept-routes
 
-      - name: Tailscale status
-        run: tailscale status || true
+      # - name: Tailscale status
+      #   run: tailscale status || true
 
       - name: Check if Attic endpoint is reachable
         id: check_attic
         run: |
-          if curl --connect-timeout 20 --silent --head http://wallfacer.curl-boga.ts.net:7080 | grep "200 OK"; then
+          if curl --connect-timeout 20 --silent --head https://cache.osbm.dev | grep "200 OK"; then
             echo "Attic endpoint is reachable"
             echo "reachable=true" >> $GITHUB_OUTPUT
           else
@@ -74,13 +74,13 @@ jobs:
 
       - name: Curl the cache
         run: |
-          curl --connect-timeout 20 --silent http://wallfacer.curl-boga.ts.net:7080/main/nix-cache-info || echo "Cache endpoint not reachable"
+          curl --connect-timeout 20 --silent https://cache.osbm.dev/main/nix-cache-info || echo "Cache endpoint not reachable"
 
       - name: Setup Attic cache
         if: steps.check_attic.outputs.reachable == 'true'
         uses: ryanccn/attic-action@v0.3.1
         with:
-          endpoint: http://wallfacer.curl-boga.ts.net:7080
+          endpoint: https://cache.osbm.dev
           cache: main
           token: ${{ secrets.ATTIC_TOKEN }}
 
