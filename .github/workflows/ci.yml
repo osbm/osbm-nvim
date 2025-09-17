@@ -61,23 +61,23 @@ jobs:
       # - name: Tailscale status
       #   run: tailscale status || true
 
-      - name: Check if Attic endpoint is reachable
-        id: check_attic
-        run: |
-          if curl --connect-timeout 20 --silent --head https://cache.osbm.dev | grep "200 OK"; then
-            echo "Attic endpoint is reachable"
-            echo "reachable=true" >> $GITHUB_OUTPUT
-          else
-            echo "Attic endpoint is not reachable"
-            echo "reachable=false" >> $GITHUB_OUTPUT
-          fi
+      # - name: Check if Attic endpoint is reachable
+      #   id: check_attic
+      #   run: |
+      #     if curl --connect-timeout 20 --silent --head https://cache.osbm.dev | grep "200 OK"; then
+      #       echo "Attic endpoint is reachable"
+      #       echo "reachable=true" >> $GITHUB_OUTPUT
+      #     else
+      #       echo "Attic endpoint is not reachable"
+      #       echo "reachable=false" >> $GITHUB_OUTPUT
+      #     fi
 
       - name: Curl the cache
         run: |
           curl --connect-timeout 20 --silent https://cache.osbm.dev/main/nix-cache-info || echo "Cache endpoint not reachable"
 
       - name: Setup Attic cache
-        if: steps.check_attic.outputs.reachable == 'true'
+        # if: steps.check_attic.outputs.reachable == 'true'
         uses: ryanccn/attic-action@v0.3.1
         with:
           endpoint: https://cache.osbm.dev
