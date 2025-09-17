@@ -41,14 +41,14 @@ jobs:
             || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
             || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
           
-          nix shell nixpkgs#tailscale --command tailscale up \
+          sudo nix shell nixpkgs#tailscale --command tailscale up \
             --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
             --hostname="$HOSTNAME" \
             --advertise-tags="tag:ci" \
             --accept-routes
 
       - name: Tailscale status
-        run: nix shell nixpkgs#tailscale --command tailscale status || true
+        run: sudo nix shell nixpkgs#tailscale --command tailscale status || true
 
       - name: Check if Attic endpoint is reachable
         id: check_attic
