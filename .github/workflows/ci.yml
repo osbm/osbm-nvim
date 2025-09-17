@@ -28,25 +28,35 @@ jobs:
         with:
           system: ${{ matrix.system }}
 
-      - name: Install and start Tailscale
-        run: |
-          # Start tailscaled daemon in background using nix shell
-          nix profile add nixpkgs#tailscale
-          sudo tailscaled --state=mem: &
-          
-          # Wait for daemon to be ready
-          sleep 10
-          
-          # Connect using OAuth
-          HOSTNAME="${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
+      - name: Login to tailscale
+        uses: tailscale/github-action@v3.2.3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          hostname: ${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
             || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
-            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
+            || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}
+          tags: tag:ci
+
+      # - name: Install and start Tailscale
+      #   run: |
+      #     # Start tailscaled daemon in background using nix shell
+      #     nix profile add nixpkgs#tailscale
+      #     sudo tailscaled --state=mem: &
           
-          tailscale up \
-            --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
-            --hostname="$HOSTNAME" \
-            --advertise-tags="tag:ci" \
-            --accept-routes
+      #     # Wait for daemon to be ready
+      #     sleep 10
+          
+      #     # Connect using OAuth
+      #     HOSTNAME="${{ matrix.system == 'x86_64-linux' && 'github-actions-x86-64-linux'
+      #       || matrix.system == 'aarch64-linux' && 'github-actions-aarch64-linux'
+      #       || matrix.system == 'x86_64-darwin' && 'github-actions-x86-64-darwin' }}"
+          
+      #     tailscale up \
+      #       --authkey="${{ secrets.TS_OAUTH_SECRET }}?preauthorized=true&ephemeral=true" \
+      #       --hostname="$HOSTNAME" \
+      #       --advertise-tags="tag:ci" \
+      #       --accept-routes
 
       - name: Tailscale status
         run: tailscale status || true
