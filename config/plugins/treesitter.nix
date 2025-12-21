@@ -1,6 +1,6 @@
 {
   plugins.treesitter = {
-    folding = true; # i dont like the way it starts neovim with everything folded
+    folding.enable = true; # i dont like the way it starts neovim with everything folded
     settings = {
       ensure_installed = [
         "python"
