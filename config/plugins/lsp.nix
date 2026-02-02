@@ -13,7 +13,7 @@
         flake = ''(builtins.getFlake "${self}")'';
       in {
         nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
-        formatting.command = ["${lib.getExe pkgs.nixfmt-rfc-style}"];
+        formatting.command = ["${lib.getExe pkgs.nixfmt}"];
       };
     };
     pyright.enable = true;
